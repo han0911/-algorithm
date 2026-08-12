@@ -1,22 +1,22 @@
+import java.util.ArrayList;
+
 class Solution {
-    public int[] solution(int[] arr, int[][] queries) {
-        int[] answer = new int[queries.length];
-
-        for (int i = 0; i < queries.length; i++) {
-            int s = queries[i][0];
-            int e = queries[i][1];
-            int k = queries[i][2];
-            
-            int min = -1;
-
-            for (int j = s; j <= e; j++) {
-                if (arr[j] > k) {
-                    if (min == -1 || arr[j] < min) {
-                        min = arr[j];
-                    }
-                }
+    public int[] solution(int n) {
+        ArrayList<Integer> list = new ArrayList<>();
+        while (true) {
+            list.add(n);
+            if (n == 1) {
+                break;
             }
-            answer[i] = min;
+            if (n % 2 == 0) {
+                n /= 2;
+            } else {
+                n = n * 3 + 1;
+            }
+        }
+        int[] answer = new int[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            answer[i] = list.get(i);
         }
         return answer;
     }
