@@ -1,23 +1,24 @@
+import java.util.ArrayList;
+
 class Solution {
-    public int[] solution(int[] arr, int[][] queries) {
-        int[] answer = new int[queries.length];
-
-        for (int i = 0; i < queries.length; i++) {
-            int s = queries[i][0];
-            int e = queries[i][1];
-            int k = queries[i][2];
-            
-            int min = -1;
-
-            for (int j = s; j <= e; j++) {
-                if (arr[j] > k) {
-                    if (min == -1 || arr[j] < min) {
-                        min = arr[j];
-                    }
-                }
+    public int[] solution(int l, int r) {
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int i = l; i <= r; i++) {
+            String s = String.valueOf(i);
+            if (s.replace("5", "").replace("0", "").equals("")) {
+                list.add(i);
             }
-            answer[i] = min;
         }
+        if (list.size() == 0) {
+            return new int[]{-1};
+        }
+
+        int[] answer = new int[list.size()];
+
+        for (int i = 0; i < list.size(); i++) {
+            answer[i] = list.get(i);
+        }
+
         return answer;
     }
 }
