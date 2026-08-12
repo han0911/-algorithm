@@ -1,9 +1,11 @@
 class Solution {
-    public int solution(int a, int b, boolean flag) {
-        if(flag){
-            return a+b;
-        }else{
-            return a-b;
+    public int solution(int a, int d, boolean[] included) {
+        int answer = 0;
+        for(int i = 0; i< included.length; i++){
+            if(included[i]){
+                answer += a+i*d;
+            }
         }
+        return answer;
     }
 }
